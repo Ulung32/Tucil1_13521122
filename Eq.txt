@@ -1,0 +1,6 @@
+1. (a op b) op (c op d)
+getComputation()
+2. a op (b op (c op d))
+3. ((a op b) op c) op d
+4. a op ((b op c) op d)
+5. (a op (b op c)) op d
