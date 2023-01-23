@@ -32,7 +32,7 @@ int char2Int (char X){
     else if(X == '9'){
         return 9;
     }
-    else if(X == '10'){
+    else if(X == 'T'){
         return 10;
     }
     else if(X == 'J' or X == 'j'){
@@ -118,17 +118,25 @@ void displayPermutationOPR (vector<vector<char>> permutation){
     }
 }
 
+
 vector<int> split(string str){
     int i = 0;
     vector<int> temp;
     while(i < str.size()){
         if(str[i] != ' '){
-            temp.push_back(char2Int(str[i]));
+            if(str[i] == '1' && str[i+1] == '0'){
+                temp.push_back(char2Int('T'));
+                i++;
+            }
+            else{
+                temp.push_back(char2Int(str[i]));
+            }
         }
         i++;
     }
     return temp;
 }
+
 bool isValid(vector<int> input){
     if(input.size() != 4){
         return false;
@@ -148,14 +156,6 @@ bool isValid(vector<int> input){
     }
 }
 
-// void inputStr(vector<string> * STR){
-//     string temp;
-//     cin >> temp;
-//     while(temp != "\n"){
-//         (*STR).push_back(temp);
-//         cin >> temp;
-//     }
-// }
 void inputNumber (vector<int>* Number){
     // vector<string> input;
     string input;
@@ -174,12 +174,6 @@ void inputNumber (vector<int>* Number){
         temp = split(input);
     }
     *Number = temp;
-    // cout << "Masukkan 4 angka!"<< endl;
-    // for(int i = 0; i<4; i++){
-    //     char temp;
-    //     cin >> temp;
-    //     (*Number).push_back(char2Int(temp));
-    // }
 }
 
 void randomInput (vector<int>* Number){
