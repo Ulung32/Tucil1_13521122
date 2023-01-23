@@ -310,7 +310,7 @@ vector<string> clearResult(vector<string> result){
 void makefile(string fileName, vector<string> clear){
     string path = "../test/" + fileName + ".txt";
     std::ofstream outfile (path);
-    outfile << "hasil sebanyak :" << clear.size()<< endl;
+    outfile << "ditemukan solusi sebanyak : " << clear.size()<< endl;
     for(int i = 0; i< clear.size(); i++){
         outfile << clear[i]<< " = 24" << endl;
     }
@@ -339,10 +339,10 @@ int main(){
     result(&Hasil, Input);
     vector<string> clear = clearResult(Hasil);
     auto stop = high_resolution_clock::now();
-    cout << "hasil sebanyak :" << clear.size()<< endl;
+    cout << "ditemukan solusi sebanyak : " << clear.size()<< endl;
     displayResult(clear);
     auto duration = duration_cast<microseconds>(stop - start);
-    cout << "runing time : " << duration.count() << " microseconds"<< endl;
+    cout << "execution time : " << duration.count() << " microseconds"<< endl;
     cout << "Apakah hasil ingin disimpan? (Y/N) ";
     cin >> simpan;
     if(simpan == "Y"){
