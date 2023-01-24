@@ -7,44 +7,31 @@ using namespace std;
 int char2Int (char X){
     if(X == 'A' or X == 'a'){
         return 1;
-    }
-    else if(X == '2'){
+    }else if(X == '2'){
         return 2;
-    }
-    else if(X == '3'){
+    }else if(X == '3'){
         return 3;
-    }
-    else if(X == '4'){
+    }else if(X == '4'){
         return 4;
-    }
-    else if(X == '5'){
+    }else if(X == '5'){
         return 5;
-    }
-    else if(X == '6'){
+    }else if(X == '6'){
         return 6;
-    }
-    else if(X == '7'){
+    }else if(X == '7'){
         return 7;
-    }
-    else if(X == '8'){
+    }else if(X == '8'){
         return 8;
-    }
-    else if(X == '9'){
+    }else if(X == '9'){
         return 9;
-    }
-    else if(X == 'T'){
+    }else if(X == 'T'){
         return 10;
-    }
-    else if(X == 'J' or X == 'j'){
+    }else if(X == 'J' or X == 'j'){
         return 11;
-    }
-    else if(X == 'Q' or X == 'q'){
+    }else if(X == 'Q' or X == 'q'){
         return 12;
-    }
-    else if(X == 'K' or X == 'k'){
+    }else if(X == 'K' or X == 'k'){
         return 13;
-    }
-    else{
+    }else{
         return 0;
     }
 }
@@ -293,7 +280,7 @@ void makefile(string fileName, vector<string> clear, vector<int> input){
     for(int i = 0; i<4; i++){
         outfile << int2Char(input[i]) << " ";
     }
-    outfile << "ditemukan solusi sebanyak : " << clear.size()<< endl;
+    outfile << "\nditemukan solusi sebanyak : " << clear.size()<< endl;
     outfile << endl;
     for(int i = 0; i< clear.size(); i++){
         outfile << clear[i]<< " = 24" << endl;
