@@ -76,25 +76,22 @@ bool isValid(vector<int> input){
         return valid;
     }
 }
-int main(){
-    bool valid = false;
-    cout << "Masukkan 4 angka! (spasi untuk input angka selanjutnya, enter jika selesai input)"<< endl;
-    string input = strcpy("");
-    vector<int> temp;
-    while(!valid){
-        getline(cin, input);
-        temp = split(input);
-        if(isValid(temp)){
-            valid = true;
-            cout << "congrats";
-        } 
-        else{
-            cout<< "Input kamu gak valid gan, ulangi!!!"<< endl;
-            cout<< "Input harus 4 angka dan valid (A,2,3,4,5,6,7,8,9,10,J,Q,K)"<<endl;
-            input = "";
-            getline(cin, input);
-        }
+
+void inputStr(vector<string> * STR){
+    string temp;
+    temp = "";
+    getline(cin, temp);
+    while(temp != " "){
+        (*STR).push_back(temp);
+        temp = "";
+        getline(cin, temp);
     }
+}
+
+int main(){
+    int a;
+    scanf("%d", &a);
+    printf("%d", a);
     // vector<int> vec{1,2,3,5,2,3,8};
     // set<int> s(vec.cbegin(), vec.cend());
     // vec = vector<int>(s.cbegin(), s.cend());
