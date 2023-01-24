@@ -301,43 +301,58 @@ void makefile(string fileName, vector<string> clear, vector<int> input){
 }
 
 int main(){
-    string inputUser = "";
-    vector<int> Input;
-    vector<string> Hasil;
-    string simpan;
-    cout << "Ingin input angka sendiri? (Y/N) "<< endl;
-    getline(cin, inputUser);
-    while(inputUser != "Y" && inputUser != "N"){
-        cout << "Input Y atau N !!!"<< endl;
-        inputUser = "";
-        getline(cin,inputUser);
-    }
-    if(inputUser == "Y"){
-        inputNumber(&Input);
-    }
-    else{
-        randomInput(&Input);
-    }
-    auto start = high_resolution_clock::now();
-    result(&Hasil, Input);
-    vector<string> clear = clearResult(Hasil);
-    auto stop = high_resolution_clock::now();
-    cout << "ditemukan solusi sebanyak : " << clear.size()<< endl;
-    displayResult(clear);
-    auto duration = duration_cast<microseconds>(stop - start);
-    cout << "execution time : " << duration.count() << " microseconds"<< endl;
-    cout << "Apakah hasil ingin disimpan? (Y/N) ";
-    cin >> simpan;
-    if(simpan == "Y"){
-        string Name;
-        cout<<"Masukkan nama file! ";
-        cin >> Name;
-        makefile(Name, clear, Input);
-        cout << "hasil berhasil disimpan di folder test"<< endl;
-        cout << "Bye"<< endl;
-    }
-    else if(simpan == "N"){
-        cout<< "Bye" << endl;
+    bool run = true;
+    while (run){
+        string inputUser = "";
+        vector<int> Input;
+        vector<string> Hasil;
+        string simpan;
+        cout << "Ingin input angka sendiri? (Y/N) "<< endl;
+        getline(cin, inputUser);
+        while(inputUser != "Y" && inputUser != "N"){
+            cout << "Input Y atau N !!!"<< endl;
+            inputUser = "";
+            getline(cin,inputUser);
+        }
+        if(inputUser == "Y"){
+            inputNumber(&Input);
+        }
+        else{
+            randomInput(&Input);
+        }
+        auto start = high_resolution_clock::now();
+        result(&Hasil, Input);
+        vector<string> clear;
+        if(Hasil.size() > 0){
+            clear = clearResult(Hasil);
+        }
+        else{
+            clear = Hasil;
+        }
+        auto stop = high_resolution_clock::now();
+        cout << "ditemukan solusi sebanyak : " << clear.size()<< endl;
+        displayResult(clear);
+        auto duration = duration_cast<microseconds>(stop - start);
+        cout << "execution time : " << duration.count() << " microseconds"<< endl;
+        cout << "Apakah hasil ingin disimpan? (Y/N) ";
+        cin >> simpan;
+        if(simpan == "Y"){
+            string Name;
+            cout<<"Masukkan nama file! ";
+            cin >> Name;
+            makefile(Name, clear, Input);
+            cout << "hasil berhasil disimpan di folder test"<< endl;
+        }
+        cout << "Ketik 1 jika ingin lanjut, 0 jika ingin udahan ! ";
+        string lanjut;
+        cin >> lanjut;
+        while(lanjut != "1" && lanjut != "0"){
+            cout<< "Inputnya 1 atau 0 bang, ulangi!!! "<< endl;
+            cin >> lanjut;
+        }
+        if(lanjut == "0"){
+            run = false;
+        }
     }
 }
  
