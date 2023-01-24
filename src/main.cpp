@@ -339,6 +339,7 @@ int main(){
         }
         if(lanjut == "0"){
             run = false;
+            cout << "bye"<< endl;
         }
     }
 }
