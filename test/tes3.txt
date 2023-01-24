@@ -1,0 +1,5 @@
+ditemukan solusi sebanyak : 4
+(5+A)*(K-9) = 24
+(A+5)*(K-9) = 24
+(K-9)*(5+A) = 24
+(K-9)*(A+5) = 24

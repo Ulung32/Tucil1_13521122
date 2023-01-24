@@ -18,16 +18,12 @@
     $ cd Tucil1_13521122
     ```
 3. Compile
-    >masuk ke folder test
     ```
-    $cd test
-    ```
-    ```
-    $  g++ main.cpp -o main
+    $  g++ "src/main.cpp" -o "bin/main.exe"
     ```
 4. Run Program
     ```
-    $ .\main
+    $ bin/main.exe
     ```
 ## Author
 Ulung Adi Putra (13521122)

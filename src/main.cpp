@@ -95,29 +95,6 @@ string int2Char (int X){
         break;
     }
 }
-void displayVector(vector<int> Angka){
-    for(size_t i = 0; i<4; i++){
-        cout << Angka[i]<< " ";
-    }
-}
-void displayPermutation (vector<vector<int>> permutation){
-    for(int i = 0; i<24; i++){
-        displayVector(permutation[i]);
-        cout<<endl;
-    }
-}
-void displayVectorOPR(vector<char> Angka){
-    for(size_t i = 0; i<3; i++){
-        cout << Angka[i]<< " ";
-    }
-}
-void displayPermutationOPR (vector<vector<char>> permutation){
-    for(int i = 0; i<64; i++){
-        displayVectorOPR(permutation[i]);
-        cout<<endl;
-    }
-}
-
 
 vector<int> split(string str){
     int i = 0;
@@ -157,7 +134,6 @@ bool isValid(vector<int> input){
 }
 
 void inputNumber (vector<int>* Number){
-    // vector<string> input;
     string input;
     bool valid = false;
     cout << "Masukkan 4 angka! (spasi untuk input angka selanjutnya, enter jika selesai input)"<< endl;
@@ -293,28 +269,35 @@ void displayResult(vector<string> result){
 }
 
 vector<string> clearResult(vector<string> result){
-    set<string> s(result.cbegin(), result.cend());
-    vector<string> clearresult = vector<string>(s.cbegin(), s.cend());
+    vector<string> clearresult;
+    clearresult.push_back(result[0]);
+    for(int i = 1; i<result.size(); i++){
+        bool same = false;
+        for(int j = 0; j < i; j ++){
+            if(result[i] == result[j]){
+                same = true;
+                break;
+            }
+        }
+        if(same == false){
+            clearresult.push_back(result[i]);
+        }
+    }
     return clearresult;
-    // int length = result.size();
-    // for(int i = 0; i< length-1; i++){
-    //     for (int j = i+1; j< length; j++){
-    //         if(result[i] == result[j]){
-    //             int indeks = j;
-    //             result.erase(indeks);
-    //         }
-    //     }
-    // }
 }
 
-void makefile(string fileName, vector<string> clear){
-    string path = "../test/" + fileName + ".txt";
+void makefile(string fileName, vector<string> clear, vector<int> input){
+    string path = "test/" + fileName + ".txt";
     std::ofstream outfile (path);
+    outfile << "Input : ";
+    for(int i = 0; i<4; i++){
+        outfile << int2Char(input[i]) << " ";
+    }
     outfile << "ditemukan solusi sebanyak : " << clear.size()<< endl;
+    outfile << endl;
     for(int i = 0; i< clear.size(); i++){
         outfile << clear[i]<< " = 24" << endl;
     }
-    // outfile.close;
 }
 
 int main(){
@@ -349,7 +332,7 @@ int main(){
         string Name;
         cout<<"Masukkan nama file! ";
         cin >> Name;
-        makefile(Name, clear);
+        makefile(Name, clear, Input);
         cout << "hasil berhasil disimpan di folder test"<< endl;
         cout << "Bye"<< endl;
     }
